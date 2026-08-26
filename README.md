@@ -6,4 +6,4 @@ Belajar git workflow lokal.
 ## Senarai Arahan
 - git init / git add / git commit
 
-## SELAMAT PAGI SHAH ALAM!!!
+## SELAMAT PAGI SHAH ALAM!!!## Tarikh
