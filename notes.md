@@ -2,3 +2,4 @@
 
 Read = git log + git diff
 
+- Branch = cabang timeline
