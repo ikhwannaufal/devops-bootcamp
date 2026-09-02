@@ -12,3 +12,4 @@ Belajar git workflow lokal.
 ## Tarikh
 26 Ogos 2026
 
+## Diubah dari laptop
