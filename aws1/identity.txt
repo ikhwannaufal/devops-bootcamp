@@ -1,0 +1,5 @@
+{
+    "UserId": "AIDAZRHYHR22QK63OIYXM",
+    "Account": "655503101621",
+    "Arn": "arn:aws:iam::655503101621:user/naufal.infratify"
+}
