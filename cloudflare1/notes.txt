@@ -1,0 +1,3 @@
+nameserver: indie.ns.cloudflare.com, morgan.ns.cloudflare.com
+portfolio: https://ikhwannaufal-github-io.pages.dev/, https://ikhwannaufal.my/
+private-site: history.ikhwannaufal.my
