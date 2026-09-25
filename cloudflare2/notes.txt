@@ -1,0 +1,4 @@
+elastic.ip: 52.77.61.204
+web: web.ikhwannaufal.my (A record, proxied)
+tunnel: cloudflare2.ikhwannaufal.my
+ssl-mode: Flexible
