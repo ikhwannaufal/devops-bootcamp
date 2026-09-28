@@ -1,0 +1,9 @@
+Docker version 29.8.1, build 4a63305
+IMAGE                   ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest           320994c3b997       8.42MB             0B        
+hello-world:latest      e2ac70e7319a       10.1kB             0B        
+infratify/card:latest   735347b6b46d       53.4MB             0B        
+nginx:alpine            3dd08163706a       62.9MB             0B        
+nginx:latest            e9567a94eddc        162MB             0B        
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+d752c5247591   nginx     "/docker-entrypoint.…"   17 seconds ago   Up 17 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web2
