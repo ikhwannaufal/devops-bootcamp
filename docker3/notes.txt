@@ -1,0 +1,8 @@
+655503101621.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bootcamp/ikhwannaufal:v1   867cb95d5051       68.8MB             0B        
+NETWORK ID     NAME      DRIVER    SCOPE
+290e2df39f44   arena     bridge    local
+59b717372a24   bridge    bridge    local
+4fd29feace77   host      host      local
+5c9ecd4361f0   none      null      local
+DRIVER    VOLUME NAME
+local     me
