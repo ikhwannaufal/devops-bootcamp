@@ -1,0 +1,1 @@
+docker compose down #padam semua; volume me kekal
