@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site_title }}</title>
+<style>
+  :root {
+    --malam: #0b0e2a;
+    --nila: #151a4a;
+    --emas: #d9b45a;
+    --emas-cerah: #f6e3a1;
+    --emas-gelap: #8a6a22;
+    --kertas: #f4ecd8;
+    --kabus: rgba(244, 236, 216, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { min-height: 100%; }
+
+  body {
+    display: grid;
+    place-items: center;
+    padding: 48px 16px;
+    color: var(--kertas);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    background-color: var(--malam);
+    /* Motif songket: berlian emas bertindih di atas langit malam */
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(217, 180, 90, 0.20), transparent 60%),
+      radial-gradient(ellipse at 50% 110%, rgba(84, 60, 160, 0.45), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23d9b45a' stroke-opacity='0.16' stroke-width='1'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3C/g%3E%3Cg fill='%23d9b45a' fill-opacity='0.28'%3E%3Ccircle cx='28' cy='28' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='1.6'/%3E%3Ccircle cx='56' cy='0' r='1.6'/%3E%3Ccircle cx='0' cy='56' r='1.6'/%3E%3Ccircle cx='56' cy='56' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* Bingkai berkilau */
+  .bingkai {
+    position: relative;
+    width: min(100%, 620px);
+    padding: 2px;
+    border-radius: 28px;
+    background: conic-gradient(
+      from var(--sudut, 0deg),
+      var(--emas-gelap), var(--emas-cerah), var(--emas), var(--emas-gelap),
+      var(--emas-cerah), var(--emas), var(--emas-gelap)
+    );
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.4),
+      0 30px 80px -20px rgba(0, 0, 0, 0.8),
+      0 0 90px -10px rgba(217, 180, 90, 0.35);
+    animation: muncul 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both, pusing 14s linear infinite;
+  }
+
+  @property --sudut {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .kad {
+    position: relative;
+    border-radius: 26px;
+    padding: 56px 44px 44px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+      linear-gradient(160deg, var(--nila), var(--malam) 75%);
+    overflow: hidden;
+  }
+
+  /* Garis dalam, seperti tepi kain */
+  .kad::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(217, 180, 90, 0.35);
+    border-radius: 16px;
+    pointer-events: none;
+  }
+
+  /* Sapuan cahaya perlahan */
+  .kad::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(246, 227, 161, 0.10), transparent);
+    transform: rotate(18deg);
+    animation: sapu 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hiasan {
+    display: block;
+    width: 150px;
+    height: 34px;
+    margin: 0 auto 22px;
+    color: var(--emas);
+  }
+
+  h1 {
+    position: relative;
+    text-align: center;
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-wrap: balance;
+    background: linear-gradient(180deg, #fff6d6 10%, var(--emas) 55%, var(--emas-gelap));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-bottom: 28px;
+    margin-bottom: 14px;
+  }
+
+  h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 72%;
+    height: 9px;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(circle, var(--emas) 0 3px, transparent 3.5px) center / 9px 9px no-repeat,
+      linear-gradient(90deg, transparent, var(--emas) 30%, transparent 46%, transparent 54%, var(--emas) 70%, transparent) center / 100% 1px no-repeat;
+  }
+
+  p {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 6px;
+    font-size: 0.82rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--kabus);
+    border-bottom: 1px dashed rgba(217, 180, 90, 0.22);
+    animation: muncul 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  p:last-of-type { border-bottom: 0; padding-bottom: 4px; }
+  p:nth-of-type(1) { animation-delay: 0.25s; }
+  p:nth-of-type(2) { animation-delay: 0.38s; }
+  p:nth-of-type(3) { animation-delay: 0.51s; }
+  p:nth-of-type(4) { animation-delay: 0.64s; }
+
+  p::before {
+    content: "";
+    flex: none;
+    align-self: center;
+    width: 7px;
+    height: 7px;
+    margin-right: -6px;
+    background: var(--emas);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(217, 180, 90, 0.8);
+  }
+
+  p span {
+    margin-left: auto;
+    text-align: right;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 1.12rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--kertas);
+    overflow-wrap: anywhere;
+    text-shadow: 0 0 18px rgba(246, 227, 161, 0.25);
+  }
+
+  @keyframes muncul {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes pusing {
+    to { --sudut: 360deg; }
+  }
+
+  @keyframes sapu {
+    0%, 55% { left: -60%; }
+    100%    { left: 130%; }
+  }
+
+  @media (max-width: 480px) {
+    .kad { padding: 44px 24px 32px; }
+    p { flex-wrap: wrap; gap: 6px 14px; }
+    p span { flex-basis: 100%; text-align: left; margin-left: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <main class="bingkai">
+    <div class="kad">
+      <svg class="hiasan" viewBox="0 0 150 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 17h44M106 17h44"/>
+        <path d="M75 2 90 17 75 32 60 17Z"/>
+        <path d="M75 9 83 17 75 25 67 17Z" fill="currentColor" fill-opacity="0.35"/>
+        <path d="M52 11 58 17 52 23 46 17Z"/>
+        <path d="M98 11 104 17 98 23 92 17Z"/>
+        <circle cx="75" cy="17" r="1.8" fill="currentColor"/>
+      </svg>
+
+      <h1>{{ site_title }}</h1>
+      <p>Pemilik: <span>{{ site_owner }}</span></p>
+      <p>Nama server: <span>{{ ansible_facts['hostname'] }}</span></p>
+      <p>IP: <span>{{ ansible_facts['default_ipv4']['address'] }}</span></p>
+      <p>Memori: <span>{{ ansible_facts['memtotal_mb'] }} MB</span></p>
+    </div>
+  </main>
+</body>
+</html>
